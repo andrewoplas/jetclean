@@ -1,0 +1,1061 @@
+@import './constants/variables';
+@import './constants/mixins';
+@import './constants/utils';
+@import '../packages/bootstrap/scss/functions';
+@import '../packages/bootstrap/scss/variables';
+@import '../packages/bootstrap/scss/mixins/breakpoints';
+
+section {
+  .title {
+    @include small-title;
+    @include remove-spacing;
+    @include media-breakpoint-down(sm) {
+      font-size: 24px;
+    }
+  }
+  .description {
+    @include small-description;
+    @include remove-spacing;
+    @include align-center;
+    @include media-breakpoint-down(sm) {
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+}
+
+.container {
+  max-width: 1300px;
+}
+
+// Navigation Section
+$nav-height: 117px;
+$nav-height-xs: 70px;
+.nav-section {
+  z-index: 100;
+  width: 100vw;
+  position: fixed;
+  padding: 20px 30px;
+  transition: 250ms;
+
+  @include media-breakpoint-down(sm) {
+    padding: 16px 5px;
+  }
+
+  &.active {
+    transition: 250ms;
+    background-color: white;
+    box-shadow: 0 10px 30px 0 rgba(25, 45, 100, 0.08);
+  }
+
+  .brand-logo {
+    z-index: 101;
+  }
+
+  .links {
+    a {
+      display: inline-block;
+      margin-right: 40px;
+      color: black;
+      font-family: $font-lt;
+      font-size: 16px;
+      line-height: 26px;
+      text-decoration: none;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        bottom: -10px;
+        left: 0;
+        background-color: $color-link-underline;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: 300ms;
+        border-radius: 2px;
+      }
+
+      &:hover:before {
+        visibility: visible;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+      }
+
+      &.active {
+        &:before {
+          visibility: visible;
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    button {
+      @include button;
+      padding: 12px 32px;
+      font-size: 18px;
+    }
+  }
+
+  .menu-xs-icon {
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .menu-xs {
+    background-color: $color-primary;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    padding-top: 110px;
+    transform: translateX(100%);
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+
+    &.active {
+      transition-duration: 300ms;
+      transition-timing-function: ease-in-out;
+      transform: translateX(0);
+    }
+
+    a,
+    button {
+      font-family: $font-lt;
+      font-weight: 600;
+      margin: 0;
+      font-size: 25px;
+      margin-bottom: 30px;
+    }
+
+    a::before {
+      content: none;
+    }
+
+    .menu-close {
+      font-size: 30px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .menu-container {
+      width: 100vw;
+      height: 400px;
+      padding: 0 25px;
+      display: flex;
+      flex-direction: column;
+
+      .store-container {
+        @include flex(center, center);
+        flex-wrap: wrap;
+        margin-top: 30px;
+
+        .store-container-label {
+          margin-bottom: 0;
+          display: block;
+          font-family: $font-lt;
+          font-size: 15px;
+          color: black;
+          flex-basis: 100%;
+        }
+
+        svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+          flex: 1;
+
+          image {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// [Section 1] Main Section
+.main-section {
+  padding: calc(96px + #{$nav-height}) 0 165px;
+
+  @include media-breakpoint-down(sm) {
+    padding: calc(46px + #{$nav-height-xs}) 0 165px;
+    padding-bottom: 0;
+  }
+
+  .title {
+    @include main-title;
+    @include remove-spacing;
+
+    font-weight: 900;
+    @include media-breakpoint-down(sm) {
+      padding-left: 25px;
+      padding-right: 25px;
+      font-size: 42px;
+      line-height: 45px;
+    }
+  }
+
+  .description {
+    @include main-description;
+    @include remove-spacing;
+    @include align-center;
+    margin-top: 21px;
+    max-width: 840px;
+
+    @include media-breakpoint-down(sm) {
+      padding-left: 25px;
+      padding-right: 25px;
+      margin-top: 50px;
+      font-size: 21px;
+      line-height: 26px;
+    }
+  }
+
+  button {
+    @include button;
+    @include align-center;
+    margin-top: 68px;
+    position: relative;
+
+    @include media-breakpoint-down(sm) {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      margin-top: 48px;
+    }
+  }
+
+  .arrow {
+    width: 156px;
+    margin: auto;
+    margin-left: calc(50% + 167px);
+    margin-top: 12px;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .extra-info {
+    @include align-center;
+    max-width: 523px;
+    margin-top: 74px;
+    padding: 13px 19px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+
+    @include media-breakpoint-down(sm) {
+      max-width: 100%;
+      width: 100%;
+      margin-top: 73px;
+      padding: 9px 15px;
+      background-color: #fcfcfc;
+      border-radius: 0;
+    }
+
+    ul {
+      @include flex(space-between, center);
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      font-family: $font-lt;
+      font-size: 16px;
+      font-weight: 500;
+
+      @include media-breakpoint-down(xs) {
+        font-size: 14px;
+        flex: 1;
+      }
+    }
+  }
+}
+
+// [Section 2] Are you on mobile
+.are-you-on-mobile {
+  height: 260px;
+  padding: 39px 20px 0;
+  background-color: #3fe5b3;
+  flex-direction: column;
+
+  .title {
+    color: white;
+  }
+
+  .description {
+    margin-top: 0;
+    color: white;
+  }
+
+  .store-container {
+    @include flex(center, center);
+    margin-top: 26px;
+
+    img {
+      width: 100px;
+    }
+
+    .img-space {
+      margin-left: 30px;
+    }
+  }
+
+  .you-know-us-from-container {
+    width: 100%;
+    margin-top: auto;
+    padding: 10px 10px 22px 10px;
+    background-color: #f4f7f7;
+    border-radius: 6px;
+    align-self: center;
+    margin-bottom: -38px;
+
+    img {
+      height: 12px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 17px;
+      font-family: $font-lt;
+      font-size: 10px;
+      color: #a7b6c5;
+    }
+  }
+}
+
+// [Section 3] Why JC
+section.why-jc {
+  padding: 187px 25px 173px;
+
+  @include media-breakpoint-down(sm) {
+    padding-top: 72px;
+    padding-bottom: 100px;
+  }
+
+  .description {
+    max-width: 858px;
+    margin-top: 28px;
+
+    @include media-breakpoint-down(sm) {
+      margin-top: 23px;
+    }
+  }
+
+  .content {
+    @include flex(center, center);
+    margin-top: 40px;
+
+    @include media-breakpoint-down(sm) {
+      margin-top: 35px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-left: -29px;
+    }
+
+    ul {
+      @include remove-spacing;
+      list-style-type: none;
+    }
+
+    li {
+      @include flex(initial, center);
+      margin-bottom: 15px;
+      font-family: $font-lt;
+      font-size: 20px;
+
+      @include media-breakpoint-down(xs) {
+        font-size: 16px;
+      }
+
+      .check-icon {
+        @include flex(center, center);
+        width: 32px;
+        height: 32px;
+        margin-right: 20px;
+        border-radius: 50%;
+        color: $color-check;
+        background-color: $color-check-background;
+        border: 1px solid $color-check-border;
+      }
+    }
+  }
+}
+
+// [Section 4] Reviews
+$sprite-gap: -60px;
+section.reviews {
+  padding: 82px 0 134px;
+
+  @include media-breakpoint-down(sm) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include media-breakpoint-only(xs) {
+    overflow: hidden;
+  }
+
+  .description {
+    max-width: 762px;
+    margin-top: 10px;
+  }
+
+  #reviews-carousel {
+    margin-top: 60px;
+
+    @include media-breakpoint-only(xs) {
+      padding: 5px;
+    }
+
+    .review-item {
+      min-height: 397px;
+      width: 413px;
+      padding: 40px 30px;
+      margin: 5px 15px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+      display: flex;
+      flex-direction: column;
+
+      @include media-breakpoint-only(xs) {
+        width: 100%;
+      }
+
+      .header {
+        @include flex(initial, center);
+
+        i.sprite {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background-image: url(https://jetclean.dk/user/themes/jetclean/assets/img/testimonial.png);
+          background-repeat: no-repeat;
+          display: block;
+
+          &.s1 {
+            background-position-x: calc(#{$sprite-gap} * 0);
+          }
+
+          &.s2 {
+            background-position-x: calc(#{$sprite-gap} * 1);
+          }
+
+          &.s3 {
+            background-position-x: calc(#{$sprite-gap} * 2);
+          }
+
+          &.s4 {
+            background-position-x: calc(#{$sprite-gap} * 3);
+          }
+
+          &.s5 {
+            background-position-x: calc(#{$sprite-gap} * 4);
+          }
+
+          &.s6 {
+            background-position-x: calc(#{$sprite-gap} * 5);
+          }
+        }
+
+        .name-stars-container {
+          margin-left: 18px;
+
+          .name {
+            margin-top: -7px;
+            margin-bottom: 0;
+            font-family: $font-lt;
+            font-size: 22px;
+            font-weight: bold;
+          }
+
+          .stars-container {
+            margin-top: 8px;
+
+            i {
+              margin-right: 2px;
+              color: $color-star;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+
+      .review-message {
+        @include remove-spacing;
+        max-width: 353px;
+        margin-top: 33px;
+        font-family: $font-lt;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 26px;
+      }
+
+      .review-status {
+        @include flex(initial, center);
+        @include remove-spacing;
+        margin-top: auto;
+        font-family: $font-lt;
+        font-size: 14px;
+        color: #858ea9;
+
+        i {
+          @include flex(center, center);
+          margin-right: 10px;
+          width: 22px;
+          height: 22px;
+          color: white;
+          background-color: #858ea9;
+          border-radius: 50%;
+          line-height: 1px;
+        }
+      }
+    }
+  }
+
+  .flickity-viewport {
+    @include media-breakpoint-only(xs) {
+      overflow: visible;
+    }
+  }
+
+  .flickity-page-dots {
+    bottom: -55px;
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      outline: none;
+      transition: 150ms;
+      background: $glide-dots-inactive;
+      opacity: 1;
+
+      &.is-selected {
+        border-radius: 10px;
+        transition: 150ms;
+        width: 35px;
+        background-color: $glide-dots-active;
+      }
+    }
+  }
+}
+
+// [Section 5] Easy Steps
+section.easy-steps {
+  @include flex(space-between, center);
+  padding: 219px 0;
+
+  @include media-breakpoint-down(sm) {
+    padding: 105px 18px 95px;
+  }
+
+  .fixed-width {
+    @include align-center;
+    max-width: 650px;
+
+    @include media-breakpoint-up(md) {
+      padding-left: 7px;
+    }
+  }
+
+  .title {
+    text-align: left;
+  }
+
+  .description {
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  $color-steps: #130b33;
+  .steps {
+    margin-top: 40px;
+    padding-left: 0;
+
+    @include media-breakpoint-only(xs) {
+      padding-left: 0;
+    }
+
+    li {
+      @include flex(initial, center);
+      padding-bottom: 70px;
+      position: relative;
+
+      @include media-breakpoint-only(xs) {
+        padding-bottom: 50px;
+        align-items: initial;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      &::before {
+        content: '';
+        width: 3px;
+        min-height: 180px;
+        margin-left: 30px;
+        margin-top: 115px;
+        position: absolute;
+        background: black;
+        z-index: -1;
+
+        @include media-breakpoint-only(xs) {
+          margin-top: 0;
+          top: 0;
+          bottom: 0;
+        }
+      }
+
+      .counter {
+        @include flex(center, center);
+        width: 63px;
+        height: 63px;
+        color: $color-steps;
+        background: white;
+        border-radius: 50%;
+        border: 3px solid $color-steps;
+        flex-shrink: 0;
+        line-height: 1px;
+
+        font-family: $font-mw;
+        font-size: 26px;
+        font-weight: bold;
+      }
+    }
+
+    .content {
+      padding-left: 46px;
+      position: relative;
+
+      @include media-breakpoint-only(xs) {
+        padding-left: 15px;
+      }
+
+      .steps-title {
+        @include remove-spacing;
+        font-family: $font-lt;
+        font-size: 26px;
+        font-weight: bold;
+
+        @include media-breakpoint-only(xs) {
+          font-size: 22px;
+        }
+      }
+
+      .steps-description {
+        @include remove-spacing;
+        margin-top: 6px;
+        font-family: $font-lt;
+        font-size: 20px;
+        font-weight: 500;
+
+        @include media-breakpoint-only(xs) {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .action-buttons {
+    @include flex(center, center);
+    margin-top: 127px;
+
+    .btn-why {
+      @include button-outline;
+      margin-right: 15px;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+
+    .btn-order-pickup {
+      @include button;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+      margin-left: 15px;
+    }
+  }
+
+  .bg-left {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+  }
+
+  .bg-right {
+    position: absolute;
+    right: 0;
+    margin-top: 170px;
+    z-index: -1;
+  }
+}
+
+// [Section 6] Download our app
+.download-our-app {
+  padding: 40px 25px 30px;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08);
+
+  .description {
+    margin-top: 18px;
+  }
+
+  .store-container {
+    @include flex(center, center);
+    margin-top: 24px;
+
+    img {
+      width: 100px;
+    }
+
+    .img-space {
+      margin-left: 30px;
+    }
+  }
+
+  .img-mobile {
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+  }
+}
+
+// [Section 7] We handle
+section.we-handle {
+  padding: 130px 0 152px;
+
+  @include media-breakpoint-down(sm) {
+    padding-top: 140px;
+    padding-bottom: 85px;
+  }
+
+  .title {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .description {
+    max-width: 700px;
+    margin-top: 14px;
+
+    @include media-breakpoint-down(sm) {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+
+  .content {
+    @include flex(center, initial);
+    margin-top: 120px;
+
+    @include media-breakpoint-down(sm) {
+      margin-top: 100px;
+    }
+
+    // &.content-desktop {
+    //   .item {
+    //     border-radius: 300px;
+
+    //     &.aos-animate {
+    //       border-radius: 8px;
+    //       transition: 2000ms;
+    //     }
+    //   }
+    // }
+
+    .column {
+      margin-left: 15px;
+      margin-right: 15px;
+
+      &.column-alt {
+        margin-top: 90px;
+      }
+    }
+
+    .item {
+      max-width: 415px;
+      min-height: 510px;
+      margin-bottom: 25px;
+      padding: 45px 59px 0;
+      text-align: center;
+      border-radius: 8px;
+
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+
+      @include media-breakpoint-down(lg) {
+        max-width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      @include media-breakpoint-down(sm) {
+        width: calc(100vw - 50px);
+        min-height: 480px;
+        height: 480px;
+        padding-left: 50px;
+        padding-right: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      &.gray {
+        background-color: $color-bg-gray;
+      }
+      &.green {
+        background-color: $color-bg-green;
+      }
+      &.yellow {
+        background-color: $color-bg-yellow;
+      }
+      &.blue {
+        background-color: $color-bg-blue;
+      }
+      &.red {
+        background-color: $color-bg-red;
+      }
+    }
+
+    .name {
+      @include remove-spacing;
+      font-family: $font-lt;
+      font-size: 26px;
+      font-weight: bold;
+      line-height: 26px;
+    }
+
+    .short-description {
+      @include remove-spacing;
+      margin-top: 25px;
+      margin-bottom: 50px;
+      font-family: $font-lt;
+      font-size: 20px;
+      font-weight: 500;
+
+      @include media-breakpoint-down(sm) {
+        font-size: 15px;
+        margin-bottom: 25px;
+      }
+    }
+
+    img {
+      max-height: 300px;
+      width: auto;
+      margin-top: auto;
+      align-self: center;
+
+      &.extend-shirt {
+        margin-bottom: -40px;
+      }
+    }
+  }
+
+  .flickity-page-dots {
+    bottom: -35px;
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      outline: none;
+      transition: 150ms;
+      background: $glide-dots-inactive;
+      opacity: 1;
+
+      &.is-selected {
+        border-radius: 10px;
+        transition: 150ms;
+        width: 35px;
+        background-color: $glide-dots-active;
+      }
+    }
+  }
+}
+
+// [Section 8] New Life
+.new-life {
+  padding: 229px 25px;
+  @include flex(center, center);
+  @include media-breakpoint-down(sm) {
+    padding: 86px 25px 57px;
+  }
+
+  .fixed-width {
+    max-width: 489px;
+  }
+
+  .description {
+    font-size: 20px;
+    margin-top: 29px;
+
+    @include media-breakpoint-down(sm) {
+      font-weight: 500;
+    }
+  }
+
+  button {
+    @include button;
+    @include align-center;
+    margin-top: 39px;
+
+    @include media-breakpoint-only(xs) {
+      width: 100%;
+    }
+  }
+
+  .bg-left {
+    height: 153px;
+    margin-top: 35px;
+    margin-right: 75px;
+
+    @include media-breakpoint-only(md) {
+      margin-right: 20px;
+    }
+  }
+
+  .bg-right {
+    height: 163px;
+    margin-top: 22px;
+    margin-left: 75px;
+
+    @include media-breakpoint-only(md) {
+      margin-left: 20px;
+    }
+  }
+}
+
+// Footer
+footer {
+  padding-top: 62.2px;
+  padding-bottom: 100px;
+  background-color: #f9fafa;
+
+  @include media-breakpoint-only(xs) {
+    padding: 74px 6px 44px;
+  }
+
+  .top {
+    .stars-container {
+      i {
+        font-size: 25px;
+        color: $color-star;
+      }
+    }
+
+    .review-description {
+      @include remove-spacing;
+      margin-top: 16.5px;
+      color: #969ca2;
+      font-family: $font-lt;
+      font-size: 16px;
+      text-decoration: underline;
+
+      @include media-breakpoint-only(xs) {
+        margin-bottom: 41px;
+      }
+    }
+
+    .header {
+      @include remove-spacing;
+      @include flex(initial, center);
+      width: 130px;
+      margin-bottom: 26px;
+      font-family: $font-lt;
+      font-size: 16px;
+      font-weight: bold;
+
+      @include media-breakpoint-between(sm, md) {
+        margin-top: 25px;
+      }
+
+      i {
+        margin-top: 3px;
+        margin-left: auto;
+        font-size: 14px;
+        padding: 3px;
+      }
+    }
+
+    .item-contact {
+      @include remove-spacing;
+      margin-bottom: 15px;
+      color: rgba(2, 14, 19, 0.4);
+      font-family: $font-lt;
+      font-size: 16px;
+      font-weight: 500;
+
+      &:last-child {
+        @include media-breakpoint-only(xs) {
+          margin-bottom: 38px;
+        }
+      }
+
+      span {
+        color: rgba(2, 14, 19, 1);
+      }
+    }
+
+    .item-link {
+      @include remove-spacing;
+      margin-bottom: 15px;
+      color: rgba(2, 14, 19, 0.4);
+      font-family: $font-lt;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      display: block;
+    }
+
+    .known-from-label {
+      @include remove-spacing;
+      margin-top: 57.4px;
+      font-family: $font-lt;
+      font-size: 16px;
+      color: rgba(2, 14, 19, 0.4);
+    }
+  }
+
+  hr {
+    margin-top: 18px;
+    margin-bottom: 30px;
+    border-top: 1px solid #e6e9f4;
+  }
+
+  .bottom {
+    .known-from-container {
+      svg {
+        margin-right: 20px;
+      }
+    }
+
+    .jetclean-text {
+      margin-right: 47px;
+      color: rgba(2, 14, 19, 0.4);
+      font-family: $font-lt;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .brands {
+      img {
+        width: 21px;
+      }
+
+      @include media-breakpoint-only(xs) {
+        margin-top: 16px;
+      }
+    }
+  }
+}
