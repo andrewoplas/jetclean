@@ -6,6 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JetClean - Newsletter</title>
 
+    <script type="application/ld+json">
+        { 
+            "@context":"http://schema.org",
+            "@type":"Review",
+            "itemReviewed":{ 
+               "@type":"Organization",
+               "name":"jetclean.dk"
+            },
+            "reviewRating":{ 
+               "@type":"aggregateRating",
+               "ratingValue":4.8,
+               "bestRating":5,
+               "reviewCount":"1108"
+            },
+            "author":"Users"
+        }
+    </script>
+
     <meta name="title" content="Renseri på den nemme måde - gratis levering alle ugens 7 dage">
     <meta name="description" content="Det tager under 2 minutter at bestille og blot 48 timer senere er din ordre klar. Vi har allerede hjulpet tusindvis af glade kunder. Skal du være den næste?">
 
@@ -134,8 +152,7 @@
         <div class="container">
             <div class="top">
                 <div class="row">
-                    <div class="col-md-12 col-lg-4 d-flex flex-column justify-content-center align-items-center"
-                            itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                    <div class="col-md-12 col-lg-4 d-flex flex-column justify-content-center align-items-center">
                         <div class="stars-container d-flex">
                             <i class="fas fa-star mr-1"></i>
                             <i class="fas fa-star mr-1"></i>
@@ -240,20 +257,6 @@
     <!-- Custom JS -->
     <script src="js/common.js"></script>
     <script src="js/newsletter.js"></script>
-
-    <!-- Schema -->
-    <script type="application/ld+json">
-        {
-          "@context": "http://schema.org/",
-          "@type": "Product",
-          "name": "JetClean",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue" : "4.8",
-            "ratingCount": "1047"
-            }
-        }
-    </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/7.8.0/firebase-app.js"></script>
