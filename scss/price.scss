@@ -8,9 +8,10 @@
 @mixin photos($url) {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url($url);
   background-position: center;
-  background-size: 100%;
+  background-size: cover;
   border-radius: 4px;
   transition: 150ms;
+  background-repeat: no-repeat;
   cursor: pointer;
 
   &:hover {
