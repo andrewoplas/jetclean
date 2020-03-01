@@ -460,9 +460,17 @@ $nav-height-xs: 70px;
         @include flex(center, center);
         margin-top: 45px;
 
+        @include media-breakpoint-only(xs) {
+          flex-wrap: wrap;
+
+          button {
+            flex-basis: 100%;
+            margin: 10px 0 !important;
+          }
+        }
+
         .btn-reviews {
           @include button;
-
           margin-right: 15px;
           padding-left: 0;
           padding-right: 0;
