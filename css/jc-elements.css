@@ -500,6 +500,15 @@ section .description {
   align-items: center;
   margin-top: 45px;
 }
+@media (max-width: 575.98px) {
+  .main-container .testimonial .body .action-buttons {
+    flex-wrap: wrap;
+  }
+  .main-container .testimonial .body .action-buttons button {
+    flex-basis: 100%;
+    margin: 10px 0 !important;
+  }
+}
 .main-container .testimonial .body .action-buttons .btn-reviews {
   padding: 20px 81px;
   background-color: #5f36ff;
